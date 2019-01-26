@@ -16,7 +16,7 @@
             // Disabling auto-braking allows for continuous movement
             // between points (ie, the agent doesn't slow down as it
             // approaches a destination point).
-            agent.autoBraking = true;
+            agent.autoBraking = false;
 
             GotoNextPoint();
         }
@@ -26,13 +26,15 @@
             if (points.Length == 0)
                 return;
 
-            destPoint = (destPoint + 1) % points.Length;
             agent.destination = points[destPoint].position;
+            destPoint = (destPoint + 1) % points.Length;
         }
 
 
         void Update () {
-            if (!agent.pathPending && agent.remainingDistance < 0.02f)
+            Debug.Log("mama goal " + destPoint);
+            if (agent.remainingDistance < 0.3f)
                 GotoNextPoint();
         }
     }
+    
