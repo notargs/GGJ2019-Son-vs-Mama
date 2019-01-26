@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     readonly Color enableColor = Color.white;
     readonly Color disableColor = Color.white * 0.5f;
 
-    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Waiting);
+    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Playing);
 
     public IReadOnlyReactiveProperty<PlayerState> State => playerState;
     

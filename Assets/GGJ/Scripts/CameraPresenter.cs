@@ -9,7 +9,10 @@ using UniRx;
 [RequireComponent(typeof(Camera))]
 public class CameraPresenter : MonoBehaviour
 {
-    [Inject] IList<ICameraTarget> cameraTargets;
+    readonly IList<ICameraTarget> cameraTargets = new List<ICameraTarget>();
+
+    public void Add(ICameraTarget cameraTarget) => cameraTargets.Add(cameraTarget);
+    public void Remove(ICameraTarget cameraTarget) => cameraTargets.Remove(cameraTarget);
     
     void Start()
     {
@@ -27,6 +30,8 @@ public class CameraPresenter : MonoBehaviour
     void OnDrawGizmos()
     {
         var bounds = CalcCameraTargetBounds();
+        
+        Gizmos.color = new Color(0, 0, 0, 0.5f);
         Gizmos.DrawCube(bounds.center, bounds.size);
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fun
 {
-    readonly ReactiveProperty<float> value = new ReactiveProperty<float>(0.5f);
+    readonly ReactiveProperty<float> value = new ReactiveProperty<float>(0.2f);
     public float Value => value.Value;
     public IObservable<float> OnValueChanged => value;
     

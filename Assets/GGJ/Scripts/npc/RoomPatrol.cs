@@ -3,10 +3,12 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System.Collections.Generic;
+using Zenject;
 
 public class RoomPatrol : MonoBehaviour
 {
-    public Transform[] points;
+    [Inject] IList<MotherPatrolPoint> points;
     NavMeshAgent agent;
 
 
@@ -25,15 +27,15 @@ public class RoomPatrol : MonoBehaviour
 
     void GotoNextPoint()
     {
-        if (points.Length == 0) return;
+        if (points.Count == 0) return;
 
-        var destPoint = Random.Range(0, points.Length);
-        agent.destination = points[destPoint].position;
+        var destPoint = Random.Range(0, points.Count);
+        agent.destination = points[destPoint].Position;
     }
 
 
     void Update()
     {
-        if (agent.remainingDistance < 0.3f) GotoNextPoint();
+        if (agent.remainingDistance < 1.0f) GotoNextPoint();
     }
 }
