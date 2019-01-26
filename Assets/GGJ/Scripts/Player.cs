@@ -9,12 +9,13 @@ public class Player : MonoBehaviour, IPlayer
 {
     [Inject(Id = "PlayIcon")] Image playIcon;
     [Inject(Id = "StudyIcon")] Image studyIcon;
-    [Inject] Boring boring;
+    [Inject] Boredom _boredom;
+    [Inject] ZenjectSceneLoader sceneLoader;
     
     readonly Color enableColor = Color.white;
     readonly Color disableColor = Color.white * 0.5f;
 
-    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>();
+    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Waiting);
 
     public IReadOnlyReactiveProperty<PlayerState> State => playerState;
     
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour, IPlayer
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            var boringValue = boring.Value;
+            var boringValue = _boredom.Value;
             var speed = 0.1f;
             switch (playerState.Value)
             {
@@ -60,7 +61,12 @@ public class Player : MonoBehaviour, IPlayer
                     throw new ArgumentOutOfRangeException();
             }
 
-            boring.SetValue(boringValue);
+            _boredom.SetValue(boringValue);
+        });
+
+        _boredom.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
+        {
+            sceneLoader.LoadScene("BoredomGameOver");
         });
         
         this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>

@@ -2881,6 +2881,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4533914832179487743, guid: c47467a43bd684c7ea12c0702ac143f5,
+        type: 3}
+      propertyPath: m_Name
+      value: BoredomGuage
+      objectReference: {fileID: 0}
     - target: {fileID: 2298213832432308180, guid: c47467a43bd684c7ea12c0702ac143f5,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2935,6 +2940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019773810522897431, guid: c47467a43bd684c7ea12c0702ac143f5,
+        type: 3}
+      propertyPath: m_Text
+      value: Boredom
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5960470211287689382, guid: c47467a43bd684c7ea12c0702ac143f5, type: 3}
