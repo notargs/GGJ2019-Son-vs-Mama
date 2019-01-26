@@ -8,13 +8,6 @@ public class CatchTarget : MonoBehaviour
     [Inject] ZenjectSceneLoader sceneLoader;
     [Inject] Player target;
     public float catchDistance;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

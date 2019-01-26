@@ -26,7 +26,7 @@ public class Anger
 
     public void IncreanceAnger()
     {
-        var speed = 1.0f;
+        var speed = 0.6f;
         value += GetScale() * Time.deltaTime * speed;
         if (value > 1)
         {

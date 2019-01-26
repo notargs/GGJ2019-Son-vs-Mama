@@ -2,20 +2,22 @@
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
-public class Player : MonoBehaviour, IPlayer
+public class Player : MonoBehaviour
 {
     [Inject(Id = "PlayIcon")] Image playIcon;
     [Inject(Id = "StudyIcon")] Image studyIcon;
-    [Inject] Boredom _boredom;
+    [Inject] Fun _fun;
     [Inject] ZenjectSceneLoader sceneLoader;
+    [Inject] Level level;
     
     readonly Color enableColor = Color.white;
     readonly Color disableColor = Color.white * 0.5f;
 
-    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Waiting);
+    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Playing);
 
     public IReadOnlyReactiveProperty<PlayerState> State => playerState;
     
@@ -45,15 +47,14 @@ public class Player : MonoBehaviour, IPlayer
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            var boringValue = _boredom.Value;
-            var speed = 0.1f;
+            var boringValue = _fun.Value;
             switch (playerState.Value)
             {
                 case PlayerState.Playing:
-                    boringValue -= Time.deltaTime * speed;
+                    boringValue += Time.deltaTime * 0.1f;
                     break;
                 case PlayerState.Studying:
-                    boringValue += Time.deltaTime * speed;
+                    boringValue -= Time.deltaTime * 0.05f;
                     break;
                 case PlayerState.Waiting:
                     break;
@@ -61,14 +62,19 @@ public class Player : MonoBehaviour, IPlayer
                     throw new ArgumentOutOfRangeException();
             }
 
-            _boredom.SetValue(boringValue);
+            _fun.SetValue(boringValue);
         });
 
-        _boredom.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
+        _fun.OnValueChanged.Where(value => value <= float.Epsilon).Subscribe(_ =>
         {
             sceneLoader.LoadScene("BoredomGameOver");
         });
-        
+
+        _fun.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
+        {
+            sceneLoader.LoadScene("MainScene", LoadSceneMode.Single, container => container.Bind<Level>().AsSingle().WithArguments(level.Value + 1));
+        });
+
         this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>
         {
             switch (playerState.Value)
