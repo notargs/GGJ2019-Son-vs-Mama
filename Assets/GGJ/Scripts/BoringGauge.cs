@@ -1,4 +1,5 @@
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +12,11 @@ public class BoringGauge : MonoBehaviour
     void Start()
     {
         var rectTransform = GetComponent<RectTransform>();
-        
-        boring.Value.Subscribe(value => { bar.sizeDelta = new Vector2(value * rectTransform.sizeDelta.x, 0); });
+
+        this.UpdateAsObservable().Subscribe(_ =>
+        {
+            Debug.Log($"Hello {boring.Value}, {rectTransform.sizeDelta.x}");
+            bar.sizeDelta = new Vector2(boring.Value * rectTransform.sizeDelta.x, 0);
+        });
     }
 }
