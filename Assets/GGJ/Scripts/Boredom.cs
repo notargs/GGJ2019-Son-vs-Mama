@@ -2,7 +2,7 @@ using System;
 using UniRx;
 using UnityEngine;
 
-public class Boring
+public class Boredom
 {
     readonly ReactiveProperty<float> value = new ReactiveProperty<float>(0.5f);
     public float Value => value.Value;

@@ -6,7 +6,7 @@ using Zenject;
 [RequireComponent(typeof(RectTransform))]
 public class BoringGauge : MonoBehaviour
 {
-    [Inject] Boring boring;
+    [Inject] Boredom boredom;
     [SerializeField] RectTransform bar;
 
     void Start()
@@ -15,7 +15,7 @@ public class BoringGauge : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            bar.sizeDelta = new Vector2(boring.Value * rectTransform.sizeDelta.x, 0);
+            bar.sizeDelta = new Vector2(boredom.Value * rectTransform.sizeDelta.x, 0);
         });
     }
 }
