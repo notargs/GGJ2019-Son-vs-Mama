@@ -13,6 +13,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode/
 
 # Gradle cache directory
 .gradle/
@@ -50,3 +51,15 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 .idea/
+
+# Zenject
+Assets/Plugins/Zenject/OptionalExtras/SampleGame*
+
+# Mac / Unrelated
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
