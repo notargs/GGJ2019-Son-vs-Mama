@@ -6,13 +6,15 @@ using UniRx.Triggers;
 
 public class MotherSearch : MonoBehaviour
 {
-    [SerializeField] Slider slider;
     [Inject] Anger anger;
 
     void Start()
     {
-        this.OnTriggerEnterAsObservable()
+        this.OnTriggerStayAsObservable()
             .Where(collider => collider.GetComponent<IPlayer>() != null)
-            .Subscribe(collider => anger.IncreanceAnger());
+            .Subscribe(collider => {
+                anger.IncreanceAnger();
+                Debug.Log("Enter");
+                });
     }
 }

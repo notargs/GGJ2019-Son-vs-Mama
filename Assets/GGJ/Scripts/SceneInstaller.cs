@@ -7,8 +7,7 @@ public class SceneInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<Boring>().AsSingle();
         Container.Bind<Anger>().AsSingle();
-        Container.Bind<TimeManager>().AsSingle();
+        Container.Bind<Boredom>().AsSingle();
     }
 }

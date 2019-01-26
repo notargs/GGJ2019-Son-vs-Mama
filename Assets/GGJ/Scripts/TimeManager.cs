@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TimeManager
+public class TimeManager : MonoBehaviour
 {
     float elapsedSecond;
 
@@ -12,6 +12,6 @@ public class TimeManager
 
     void Update()
     {
-        elapsedSecond += Time.deltaTime;
+        elapsedSecond += Time.deltaTime * 60 * 60 * 2;
     }
 }

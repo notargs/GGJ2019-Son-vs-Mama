@@ -15,7 +15,9 @@ public class TimePresenter : MonoBehaviour
     {
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            text.text = $"{timeManager.GetOneDayHour()}:{timeManager.GetOneHourMinutes()}";
+            var hour = Mathf.FloorToInt(timeManager.GetOneDayHour()).ToString("00");
+            var min = Mathf.FloorToInt(timeManager.GetOneHourMinutes()).ToString("00");
+            text.text = $"{hour}:{min}";
         });
     }
 }
