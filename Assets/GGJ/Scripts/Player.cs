@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     [Inject(Id = "PlayIcon")] Image playIcon;
     [Inject(Id = "StudyIcon")] Image studyIcon;
-    [Inject] Boredom _boredom;
+    [Inject] Fun _fun;
     [Inject] ZenjectSceneLoader sceneLoader;
     
     readonly Color enableColor = Color.white;
@@ -45,15 +45,14 @@ public class Player : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            var boringValue = _boredom.Value;
-            var speed = 0.1f;
+            var boringValue = _fun.Value;
             switch (playerState.Value)
             {
                 case PlayerState.Playing:
-                    boringValue -= Time.deltaTime * speed;
+                    boringValue += Time.deltaTime * 0.05f;
                     break;
                 case PlayerState.Studying:
-                    boringValue += Time.deltaTime * speed;
+                    boringValue -= Time.deltaTime * 0.1f;
                     break;
                 case PlayerState.Waiting:
                     break;
@@ -61,10 +60,10 @@ public class Player : MonoBehaviour
                     throw new ArgumentOutOfRangeException();
             }
 
-            _boredom.SetValue(boringValue);
+            _fun.SetValue(boringValue);
         });
 
-        _boredom.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
+        _fun.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
         {
             sceneLoader.LoadScene("BoredomGameOver");
         });

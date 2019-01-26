@@ -42,7 +42,6 @@ public class CameraPresenter : MonoBehaviour
         for (var i = 1; i < cameraTargets.Count; ++i)
         {
             bounds.Encapsulate(cameraTargets[i].Position);
-            Debug.Log("Test");
         }
 
         return bounds;

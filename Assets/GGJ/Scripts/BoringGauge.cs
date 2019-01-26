@@ -1,21 +1,17 @@
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(RectTransform))]
 public class BoringGauge : MonoBehaviour
 {
-    [Inject] Boredom boredom;
-    [SerializeField] RectTransform bar;
+    [Inject] Fun fun;
+    [SerializeField] Slider slider;
 
     void Start()
     {
-        var rectTransform = GetComponent<RectTransform>();
-
-        this.UpdateAsObservable().Subscribe(_ =>
-        {
-            bar.sizeDelta = new Vector2(boredom.Value * rectTransform.sizeDelta.x, 0);
-        });
+        this.UpdateAsObservable().Subscribe(_ => slider.value = fun.Value);
     }
 }
