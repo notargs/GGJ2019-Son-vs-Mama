@@ -65,7 +65,32 @@ ModelImporter:
     4300016: pSphere1
     4300018: pCylinder7
     4300020: pCylinder8
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 435f79094166a41aca53a24a8a902601, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: df6b0448e8e3d492386cc28ef46cc513, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: 5521118599c1d4f8684e7de4551b9313, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong5
+    second: {fileID: 2100000, guid: 2201a7de26cf64679bd2989722a21bb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong6
+    second: {fileID: 2100000, guid: ef521c4c38fd443ea899ddac9ad74dbe, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

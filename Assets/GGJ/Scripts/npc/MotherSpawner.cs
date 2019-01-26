@@ -11,7 +11,7 @@ public class MotherSpawner : MonoBehaviour
     
     void Start()
     {
-        for (var i = 0; i < Mathf.Pow(level.Value, 2.0f); ++i)
+        for (var i = 0; i < Mathf.Pow(level.Value, 1.5f); ++i)
         {
             var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
             var mother = motherFactory.Create();

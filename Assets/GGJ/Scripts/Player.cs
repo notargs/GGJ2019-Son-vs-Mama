@@ -2,6 +2,7 @@
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     [Inject(Id = "StudyIcon")] Image studyIcon;
     [Inject] Fun _fun;
     [Inject] ZenjectSceneLoader sceneLoader;
+    [Inject] Level level;
     
     readonly Color enableColor = Color.white;
     readonly Color disableColor = Color.white * 0.5f;
@@ -49,10 +51,10 @@ public class Player : MonoBehaviour
             switch (playerState.Value)
             {
                 case PlayerState.Playing:
-                    boringValue += Time.deltaTime * 0.05f;
+                    boringValue += Time.deltaTime * 0.1f;
                     break;
                 case PlayerState.Studying:
-                    boringValue -= Time.deltaTime * 0.1f;
+                    boringValue -= Time.deltaTime * 0.05f;
                     break;
                 case PlayerState.Waiting:
                     break;
@@ -63,11 +65,16 @@ public class Player : MonoBehaviour
             _fun.SetValue(boringValue);
         });
 
-        _fun.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
+        _fun.OnValueChanged.Where(value => value <= float.Epsilon).Subscribe(_ =>
         {
             sceneLoader.LoadScene("BoredomGameOver");
         });
-        
+
+        _fun.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
+        {
+            sceneLoader.LoadScene("MainScene", LoadSceneMode.Single, container => container.Bind<Level>().AsSingle().WithArguments(level.Value + 1));
+        });
+
         this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>
         {
             switch (playerState.Value)
