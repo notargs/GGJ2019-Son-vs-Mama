@@ -20,7 +20,7 @@ public class CatchTarget : MonoBehaviour
     void Update()
     {
         if (Vector3.Distance(this.transform.position, target.transform.position) < this.catchDistance &&
-                target.State.Equals(PlayerState.Playing))
+                target.State.Value.Equals(PlayerState.Playing))
         {
             sceneLoader.LoadScene("GameOver");
         }
