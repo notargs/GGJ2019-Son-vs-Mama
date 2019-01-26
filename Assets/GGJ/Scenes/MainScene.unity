@@ -113,6 +113,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1835086aba7254c3aa8ea1765ae5e68e, type: 2}
+--- !u!1 &619476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5387572495828409363, guid: e07e212564b834448b920edd947d1aa6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5387572495828987847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &619477
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619476}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!43 &82985507
 Mesh:
   m_ObjectHideFlags: 0
@@ -2320,7 +2348,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5387572495828409362, guid: e07e212564b834448b920edd947d1aa6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e07e212564b834448b920edd947d1aa6, type: 3}
 --- !u!1001 &5809496511818963295
 PrefabInstance:
