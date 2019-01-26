@@ -11,7 +11,7 @@ public class MotherSearch : MonoBehaviour
     void Start()
     {
         this.OnTriggerStayAsObservable()
-            .Where(collider => collider.GetComponent<IPlayer>() != null)
+            .Where(collider => collider.GetComponent<Player>() != null)
             .Subscribe(collider => {
                 anger.IncreanceAnger();
                 Debug.Log("Enter");

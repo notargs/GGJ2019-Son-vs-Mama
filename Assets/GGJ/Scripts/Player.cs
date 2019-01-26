@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class Player : MonoBehaviour, IPlayer
+public class Player : MonoBehaviour
 {
     [Inject(Id = "PlayIcon")] Image playIcon;
     [Inject(Id = "StudyIcon")] Image studyIcon;

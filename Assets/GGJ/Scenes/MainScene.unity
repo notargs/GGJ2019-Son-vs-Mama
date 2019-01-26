@@ -2193,10 +2193,6 @@ PrefabInstance:
       propertyPath: points.Array.data[3]
       value: 
       objectReference: {fileID: 2027194041}
-    - target: {fileID: 619479, guid: 87567c581446f4233affc2a085256706, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 2239448798617070322}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87567c581446f4233affc2a085256706, type: 3}
 --- !u!1 &917709120
@@ -2505,6 +2501,7 @@ GameObject:
   - component: {fileID: 1137275538}
   - component: {fileID: 1137275537}
   - component: {fileID: 1137275540}
+  - component: {fileID: 1137275541}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2636,6 +2633,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1137275541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137275536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ed85d8a8374bae97c8a6181934b651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1159134123
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,19 +6020,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2239448798617070325, guid: 58830aabec9104d4eb6383be0bcc0e31,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58830aabec9104d4eb6383be0bcc0e31, type: 3}
---- !u!1 &2239448798617070322 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2239448797832067150, guid: 58830aabec9104d4eb6383be0bcc0e31,
-    type: 3}
-  m_PrefabInstance: {fileID: 2239448798617070321}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2239448798617070327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2239448797832067122, guid: 58830aabec9104d4eb6383be0bcc0e31,
