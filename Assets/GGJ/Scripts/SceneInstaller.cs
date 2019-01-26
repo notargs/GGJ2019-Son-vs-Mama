@@ -7,6 +7,7 @@ public class SceneInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        Container.Bind<Anger>().AsSingle();
         Container.Bind<Boredom>().AsSingle();
     }
 }
