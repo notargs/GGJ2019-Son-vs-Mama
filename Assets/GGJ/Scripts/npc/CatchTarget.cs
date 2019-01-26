@@ -6,8 +6,7 @@ using Zenject;
 public class CatchTarget : MonoBehaviour
 {
     [Inject] ZenjectSceneLoader sceneLoader;
-    [Inject] 
-    public GameObject target;
+    [Inject] Player target;
     public float catchDistance;
     
 
@@ -20,7 +19,8 @@ public class CatchTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(this.transform.position, target.transform.position) < this.catchDistance)
+        if (Vector3.Distance(this.transform.position, target.transform.position) < this.catchDistance &&
+                target.State.Equals(PlayerState.Playing))
         {
             sceneLoader.LoadScene("GameOver");
         }
