@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
 
         _fun.OnValueChanged.Where(value => value <= float.Epsilon).Subscribe(_ =>
         {
-            sceneLoader.LoadScene("BoredomGameOver");
+            sceneLoader.LoadScene("BoredomGameOver", LoadSceneMode.Single, container => container.Bind<Level>().AsSingle().WithArguments(level.Value));
         });
 
         _fun.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
