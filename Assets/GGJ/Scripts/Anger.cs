@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class Anger
 {
-    ZenjectSceneLoader sceneLoader;
-    TimeManager timeManager;
+    readonly ZenjectSceneLoader sceneLoader;
+    readonly TimeManager timeManager;
+    readonly Level level;
 
     float value;
 
     public float GetValue() => value;
 
-    public Anger(TimeManager timeManager, ZenjectSceneLoader sceneLoader)
+    public Anger(TimeManager timeManager, ZenjectSceneLoader sceneLoader, Level level)
     {
         this.sceneLoader = sceneLoader;
         this.timeManager = timeManager;
+        this.level = level;
     }
 
     float GetScale()
@@ -30,7 +33,7 @@ public class Anger
         value += GetScale() * Time.deltaTime * speed;
         if (value > 1)
         {
-            sceneLoader.LoadScene("GameOver");
+            sceneLoader.LoadScene("GameOver", LoadSceneMode.Single, container => container.Bind<Level>().AsSingle().WithArguments(level.Value));
         }
     }
 }
