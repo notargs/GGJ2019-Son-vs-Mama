@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3592100452388595937}
   - component: {fileID: 3592100452388595938}
   m_Layer: 5
-  m_Name: ReturnToTitleButton
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,9 +175,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-    m_HighlightedColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0.78431374}
-    m_PressedColor: {r: 0.25943398, g: 0.47247377, b: 1, a: 0.78431374}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 0.9019608}
+    m_HighlightedColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0.9019608}
+    m_PressedColor: {r: 0.25943398, g: 0.47247377, b: 1, a: 0.9019608}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

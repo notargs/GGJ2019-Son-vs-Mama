@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GGJ/Scenes/Title.unity
     guid: 0eb989c2694e34ebba436338b4bde4a5
+  - enabled: 1
+    path: Assets/GGJ/Scenes/BoredomGameOver.unity
+    guid: e161c6fb631f2402daa706ac4b9a8863
   m_configObjects: {}
