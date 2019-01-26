@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076382f3a4a4f9341a24329121cd0df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 829345718979269358}
 --- !u!1 &89028088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,8 +1065,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4827495965899953306, guid: 3de25a3387fc03449af0627e97b5fa4e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3de25a3387fc03449af0627e97b5fa4e, type: 3}
+--- !u!136 &829345718979269358 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 4827495965899953305, guid: 3de25a3387fc03449af0627e97b5fa4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5295348645315020407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &829345718979269356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4827495965899953307, guid: 3de25a3387fc03449af0627e97b5fa4e,
