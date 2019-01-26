@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using System;
+using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour, IPlayer
 {
     [Inject(Id = "PlayIcon")] Image playIcon;
     [Inject(Id = "StudyIcon")] Image studyIcon;
+    [Inject] Boring boring;
+    
     readonly Color enableColor = Color.white;
     readonly Color disableColor = Color.white * 0.5f;
 
@@ -33,9 +36,31 @@ public class Player : MonoBehaviour, IPlayer
                     playIcon.color = disableColor;
                     studyIcon.color = disableColor;
                     return;
-                        
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
+        });
+
+        this.UpdateAsObservable().Subscribe(_ =>
+        {
+            var boringValue = boring.Value;
+            var speed = 0.1f;
+            switch (playerState.Value)
+            {
+                case PlayerState.Playing:
+                    boringValue -= Time.deltaTime * speed;
+                    break;
+                case PlayerState.Studying:
+                    boringValue += Time.deltaTime * speed;
+                    break;
+                case PlayerState.Waiting:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            boring.SetValue(boringValue);
         });
         
         this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>
@@ -49,6 +74,8 @@ public class Player : MonoBehaviour, IPlayer
                 case PlayerState.Studying:
                     playerState.Value = PlayerState.Playing;
                     return;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         });
     }

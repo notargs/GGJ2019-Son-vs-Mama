@@ -15,7 +15,6 @@ public class BoringGauge : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            Debug.Log($"Hello {boring.Value}, {rectTransform.sizeDelta.x}");
             bar.sizeDelta = new Vector2(boring.Value * rectTransform.sizeDelta.x, 0);
         });
     }

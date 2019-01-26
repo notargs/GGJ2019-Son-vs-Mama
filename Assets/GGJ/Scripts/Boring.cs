@@ -1,5 +1,6 @@
 using System;
 using UniRx;
+using UnityEngine;
 
 public class Boring
 {
@@ -7,5 +8,5 @@ public class Boring
     public float Value => value.Value;
     public IObservable<float> OnValueChanged => value;
     
-    public void SetValue(float v) => value.Value = v;
+    public void SetValue(float v) => value.Value = Mathf.Clamp01(v);
 }
