@@ -1,3 +1,6 @@
+using UnityEditor.ShaderGraph;
+using UnityEngine;
+
 namespace GGJ.Scripts
 {
     public class Level
@@ -8,5 +11,16 @@ namespace GGJ.Scripts
         {
             Value = value;
         }
+    }
+    public class HighScore
+    {
+        public int Value { get; private set; }
+
+        public HighScore(int value)
+        {
+            Value = value;
+        }
+
+        public void UpdateHighScore(int value) => Value = Mathf.Max(value, Value);
     }
 }
