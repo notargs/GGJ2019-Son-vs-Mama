@@ -14,7 +14,6 @@ public class MotherSearch : MonoBehaviour
             .Where(collider => collider.GetComponent<IPlayer>() != null)
             .Subscribe(collider => {
                 anger.IncreanceAnger();
-                Debug.Log("Enter");
                 });
     }
 }
