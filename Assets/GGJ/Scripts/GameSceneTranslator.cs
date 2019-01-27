@@ -10,11 +10,12 @@ namespace GGJ.Scripts
         readonly CompositeDisposable disposable = new CompositeDisposable();
         bool loadStarted;
 
-        GameSceneTranslator(Fun fun, Anger anger, ZenjectSceneLoader sceneLoader, Level level)
+        GameSceneTranslator(Fun fun, Anger anger, ZenjectSceneLoader sceneLoader, Level level, HighScore highScore)
         {
             fun.OnValueChanged.Where(value => value <= float.Epsilon).Where(_ => !loadStarted).Subscribe(_ =>
             {
                 loadStarted = true;
+                highScore.updateScore(level.Value);
                 sceneLoader.LoadScene("BoredomGameOver", LoadSceneMode.Single, container => container.Bind<Level>().AsSingle().WithArguments(level.Value));
             }).AddTo(disposable);
 
@@ -27,6 +28,7 @@ namespace GGJ.Scripts
             anger.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Where(_ => !loadStarted).Subscribe(_ =>
             {
                 loadStarted = true;
+                highScore.updateScore(level.Value);
                 sceneLoader.LoadScene("GameOver", LoadSceneMode.Single, container => container.Bind<Level>().AsSingle().WithArguments(level.Value));
             }).AddTo(disposable);
         }
