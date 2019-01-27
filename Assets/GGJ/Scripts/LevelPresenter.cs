@@ -4,14 +4,14 @@ using Zenject;
 
 namespace GGJ.Scripts
 {
-    public class ScorePresenter : MonoBehaviour
+    public class LevelPresenter : MonoBehaviour
     {
         [SerializeField] Text text;
         [Inject] Level level;
 
         void Start()
         {
-            text.text = $"Score: Level {level.Value}";
+            text.text = $"Level {level.Value}";
         }
     }
 }
