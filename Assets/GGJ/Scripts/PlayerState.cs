@@ -3,7 +3,6 @@ namespace GGJ.Scripts
     public enum PlayerState
     {
         Playing,
-        Studying,
-        Waiting,
+        Studying
     }
 }
