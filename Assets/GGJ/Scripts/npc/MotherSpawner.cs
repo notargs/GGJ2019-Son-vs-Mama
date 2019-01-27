@@ -15,7 +15,7 @@ namespace GGJ.Scripts.npc
             var count = 1;
             if (level.Value != 1)
             {
-                count = Mathf.RoundToInt(Mathf.Pow(level.Value * 0.5f, 0.3f) * 8.0f);
+                count = level.Value * 4;
             }
             for (var i = 0; i < count; ++i)
             {
