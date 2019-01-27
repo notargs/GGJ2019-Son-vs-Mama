@@ -2,88 +2,82 @@
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using Zenject;
 
-public class Player : MonoBehaviour, IPlayer
+namespace GGJ.Scripts
 {
-    [Inject(Id = "PlayIcon")] Image playIcon;
-    [Inject(Id = "StudyIcon")] Image studyIcon;
-    [Inject] Boredom _boredom;
-    [Inject] ZenjectSceneLoader sceneLoader;
-    
-    readonly Color enableColor = Color.white;
-    readonly Color disableColor = Color.white * 0.5f;
-
-    readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Waiting);
-
-    public IReadOnlyReactiveProperty<PlayerState> State => playerState;
-    
-    void Start()
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class Player : MonoBehaviour
     {
-        playerState.Subscribe(state =>
+        [Inject] Fun _fun;
+        [Inject] ZenjectSceneLoader sceneLoader;
+        [Inject] Level level;
+        [Inject(Id = "GameTable")] Transform gameTable;
+        [Inject(Id = "StudyTable")] Transform studyTable;
+        [SerializeField] AudioSource seAudioSource;
+    
+        readonly Color enableColor = Color.white;
+        readonly Color disableColor = Color.white * 0.5f;
+
+        readonly ReactiveProperty<PlayerState> playerState= new ReactiveProperty<PlayerState>(PlayerState.Playing);
+
+        public IReadOnlyReactiveProperty<PlayerState> State => playerState;
+    
+        void Start()
         {
-            switch (state)
+            var agent = GetComponent<NavMeshAgent>();
+            playerState.Subscribe(state =>
             {
-                case PlayerState.Playing:
-                    playIcon.color = enableColor;
-                    studyIcon.color = disableColor;
-                    return;
-                case PlayerState.Studying:
-                    playIcon.color = disableColor;
-                    studyIcon.color = enableColor;
-                    return;
-                case PlayerState.Waiting:
-                    playIcon.color = disableColor;
-                    studyIcon.color = disableColor;
-                    return;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                switch (state)
+                {
+                    case PlayerState.Playing:
+                        agent.destination = gameTable.position;
+                        return;
+                    case PlayerState.Studying:
+                        agent.destination = studyTable.position;
+                        return;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
 
-        });
+            });
 
-        this.UpdateAsObservable().Subscribe(_ =>
-        {
-            var boringValue = _boredom.Value;
-            var speed = 0.1f;
-            switch (playerState.Value)
+            this.UpdateAsObservable().Subscribe(_ =>
             {
-                case PlayerState.Playing:
-                    boringValue -= Time.deltaTime * speed;
-                    break;
-                case PlayerState.Studying:
-                    boringValue += Time.deltaTime * speed;
-                    break;
-                case PlayerState.Waiting:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                var boringValue = _fun.Value;
+                switch (playerState.Value)
+                {
+                    case PlayerState.Playing:
+                        boringValue += Time.deltaTime * 0.1f;
+                        break;
+                    case PlayerState.Studying:
+                        boringValue -= Time.deltaTime * 0.05f;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
 
-            _boredom.SetValue(boringValue);
-        });
+                _fun.SetValue(boringValue);
+            });
 
-        _boredom.OnValueChanged.Where(value => value >= 1 - float.Epsilon).Subscribe(_ =>
-        {
-            sceneLoader.LoadScene("BoredomGameOver");
-        });
-        
-        this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>
-        {
-            switch (playerState.Value)
+            this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>
             {
-                case PlayerState.Waiting:
-                case PlayerState.Playing:
-                    playerState.Value = PlayerState.Studying;
-                    return;
-                case PlayerState.Studying:
-                    playerState.Value = PlayerState.Playing;
-                    return;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        });
+                seAudioSource.PlayOneShot(seAudioSource.clip);
+                switch (playerState.Value)
+                {
+                    case PlayerState.Playing:
+                        playerState.Value = PlayerState.Studying;
+                        return;
+                    case PlayerState.Studying:
+                        playerState.Value = PlayerState.Playing;
+                        return;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            });
+        }
+
     }
-
 }

@@ -1,0 +1,9 @@
+diff a/Assets/GGJ/Scripts/MotherSearch.cs b/Assets/GGJ/Scripts/MotherSearch.cs	(rejected hunks)
+@@ -14,7 +14,6 @@
+             .Where(collider => collider.GetComponent<IPlayer>() != null)
+             .Subscribe(collider => {
+                 anger.IncreanceAnger();
+-                Debug.Log("Enter");
+                 });
+     }
+ }

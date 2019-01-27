@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Zenject;
 using UniRx;
 using UniRx.Triggers;
+using GGJ.Scripts;
 
 public class MotherSearch : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class MotherSearch : MonoBehaviour
             .Where(collider => collider.GetComponent<IPlayer>() != null)
             .Subscribe(collider => {
                 anger.IncreanceAnger();
+                Debug.Log("Enter");
                 });
     }
+}
+
+internal interface IPlayer
+{
 }

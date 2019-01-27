@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-using Zenject;
-using UniRx;
+﻿using UniRx;
 using UniRx.Triggers;
+using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
-public class AngerGauge : MonoBehaviour
+namespace GGJ.Scripts
 {
-    [SerializeField] Slider slider;
-    [Inject] Anger anger;
-
-    void Start()
+    public class AngerGauge : MonoBehaviour
     {
-        this.UpdateAsObservable().Subscribe(_ =>
+        [SerializeField] Slider slider;
+        [Inject] Anger anger;
+
+        void Start()
         {
-            slider.value = anger.GetValue();
-        });
+            this.UpdateAsObservable().Subscribe(_ =>
+            {
+                slider.value = anger.GetValue();
+            });
+        }
     }
 }

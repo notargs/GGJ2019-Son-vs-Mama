@@ -1,36 +1,36 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using System;
+using UniRx;
+using UnityEngine;
 
-public class Anger
+namespace GGJ.Scripts
 {
-    ZenjectSceneLoader sceneLoader;
-    TimeManager timeManager;
-
-    float value;
-
-    public float GetValue() => value;
-
-    public Anger(TimeManager timeManager, ZenjectSceneLoader sceneLoader)
+    public class Anger
     {
-        this.sceneLoader = sceneLoader;
-        this.timeManager = timeManager;
-    }
+        readonly TimeManager timeManager;
 
-    float GetScale()
-    {
-        //ある時間帯によって怒りゲージが増えやすくなる
-        var hour = timeManager.GetOneDayHour();
-        if (hour <= 5) return 2;
-        return 1;
-    }
+        readonly ReactiveProperty<float> value = new ReactiveProperty<float>();
 
-    public void IncreanceAnger()
-    {
-        var speed = 1.0f;
-        value += GetScale() * Time.deltaTime * speed;
-        if (value > 1)
+        public float GetValue() => value.Value;
+
+        public IObservable<float> OnValueChanged => value;
+
+        public Anger(TimeManager timeManager)
         {
-            sceneLoader.LoadScene("GameOver");
+            this.timeManager = timeManager;
+        }
+
+        float GetScale()
+        {
+            //ある時間帯によって怒りゲージが増えやすくなる
+            var hour = timeManager.GetOneDayHour();
+            if (hour <= 5) return 2;
+            return 1;
+        }
+
+        public void IncreanceAnger()
+        {
+            var speed = 0.6f;
+            value.Value += GetScale() * Time.deltaTime * speed;
         }
     }
 }

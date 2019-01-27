@@ -3,15 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class GameOver : MonoBehaviour
+namespace GGJ.Scripts
 {
-    [Inject] ZenjectSceneLoader sceneLoader;
-    
-    [SerializeField] Button button = default;
-    
-    void Start()
+    public class GameOver : MonoBehaviour
     {
-        button.OnClickAsObservable()
-            .Subscribe(_ => sceneLoader.LoadScene("Title"));
+        [Inject] ZenjectSceneLoader sceneLoader;
+
+        [SerializeField] Button button = default;
+
+        void Start()
+        {
+            button.OnClickAsObservable()
+                .Subscribe(_ => sceneLoader.LoadScene("Title"));
+        }
     }
 }
