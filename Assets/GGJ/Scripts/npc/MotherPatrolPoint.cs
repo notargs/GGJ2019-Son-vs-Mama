@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class MotherPatrolPoint : MonoBehaviour
+namespace GGJ.Scripts.npc
 {
-    public Vector3 Position => transform.position;
-    
-    void OnDrawGizmos()
+    public class MotherPatrolPoint : MonoBehaviour
     {
-        Gizmos.color = new Color(0, 0, 1, 0.5f);
-        Gizmos.DrawSphere(transform.position, 1);
+        public Vector3 Position => transform.position;
+    
+        void OnDrawGizmos()
+        {
+            Gizmos.color = new Color(0, 0, 1, 0.5f);
+            Gizmos.DrawSphere(transform.position, 1);
+        }
     }
 }

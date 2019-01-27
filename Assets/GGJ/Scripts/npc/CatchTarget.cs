@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
-public class CatchTarget : MonoBehaviour
+namespace GGJ.Scripts.npc
 {
-    [Inject] ZenjectSceneLoader sceneLoader;
-    [Inject] Player target;
-    public float catchDistance;
-
-    // Update is called once per frame
-    void Update()
+    public class CatchTarget : MonoBehaviour
     {
-        if (Vector3.Distance(this.transform.position, target.transform.position) < this.catchDistance &&
-                target.State.Value.Equals(PlayerState.Playing))
+        [Inject] ZenjectSceneLoader sceneLoader;
+        [Inject] Player target;
+        public float catchDistance;
+
+        // Update is called once per frame
+        void Update()
         {
-            sceneLoader.LoadScene("GameOver");
+            if (Vector3.Distance(this.transform.position, target.transform.position) < this.catchDistance &&
+                target.State.Value.Equals(PlayerState.Playing))
+            {
+                sceneLoader.LoadScene("GameOver");
+            }
         }
     }
 }

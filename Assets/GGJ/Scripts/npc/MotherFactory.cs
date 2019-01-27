@@ -1,6 +1,8 @@
-using UnityEngine;
 using Zenject;
 
-public class MotherFactory : PlaceholderFactory<Mother>
+namespace GGJ.Scripts.npc
 {
+    public class MotherFactory : PlaceholderFactory<Mother>
+    {
+    }
 }

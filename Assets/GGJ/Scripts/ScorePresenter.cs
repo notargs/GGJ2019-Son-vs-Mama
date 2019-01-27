@@ -2,13 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class ScorePresenter : MonoBehaviour
+namespace GGJ.Scripts
 {
-    [SerializeField] Text text;
-    [Inject] Level level;
-
-    void Start()
+    public class ScorePresenter : MonoBehaviour
     {
-        text.text = $"Score: {level.Value} Level";
+        [SerializeField] Text text;
+        [Inject] Level level;
+
+        void Start()
+        {
+            text.text = $"Score: {level.Value} Level";
+        }
     }
 }

@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
-using UniRx.Triggers;
 using Zenject;
 
-public class TimePresenter : MonoBehaviour
+namespace GGJ.Scripts
 {
-    [Inject] TimeManager timeManager;
-    [SerializeField] Text text;
-
-    void Start()
+    public class TimePresenter : MonoBehaviour
     {
-        this.UpdateAsObservable().Subscribe(_ =>
+        [Inject] TimeManager timeManager;
+        [SerializeField] Text text;
+
+        void Start()
         {
-            var hour = Mathf.FloorToInt(timeManager.GetOneDayHour()).ToString("00");
-            var min = Mathf.FloorToInt(timeManager.GetOneHourMinutes()).ToString("00");
-            text.text = $"{hour}:{min}";
-        });
+            this.UpdateAsObservable().Subscribe(_ =>
+            {
+                var hour = Mathf.FloorToInt(timeManager.GetOneDayHour()).ToString("00");
+                var min = Mathf.FloorToInt(timeManager.GetOneHourMinutes()).ToString("00");
+                text.text = $"{hour}:{min}";
+            });
+        }
     }
 }

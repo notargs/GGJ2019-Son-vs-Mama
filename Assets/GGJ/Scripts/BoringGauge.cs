@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-[RequireComponent(typeof(RectTransform))]
-public class BoringGauge : MonoBehaviour
+namespace GGJ.Scripts
 {
-    [Inject] Fun fun;
-    [SerializeField] Slider slider;
-
-    void Start()
+    [RequireComponent(typeof(RectTransform))]
+    public class BoringGauge : MonoBehaviour
     {
-        this.UpdateAsObservable().Subscribe(_ => slider.value = fun.Value);
+        [Inject] Fun fun;
+        [SerializeField] Slider slider;
+
+        void Start()
+        {
+            this.UpdateAsObservable().Subscribe(_ => slider.value = fun.Value);
+        }
     }
 }
