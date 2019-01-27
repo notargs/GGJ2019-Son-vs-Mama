@@ -1,6 +1,8 @@
-public enum PlayerState
+namespace GGJ.Scripts
 {
-    Playing,
-    Studying,
-    Waiting,
+    public enum PlayerState
+    {
+        Playing,
+        Studying
+    }
 }
