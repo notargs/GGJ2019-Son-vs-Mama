@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 8174524385108368688, guid: fcc12093444d746549a20c4534a39905,
         type: 3}
       propertyPath: m_Text
-      value: Angur
+      value: Anger
       objectReference: {fileID: 0}
     - target: {fileID: 8174524385108368688, guid: fcc12093444d746549a20c4534a39905,
         type: 3}
