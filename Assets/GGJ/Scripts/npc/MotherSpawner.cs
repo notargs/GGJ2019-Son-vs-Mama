@@ -12,7 +12,12 @@ namespace GGJ.Scripts.npc
     
         void Start()
         {
-            for (var i = 0; i < Mathf.Pow(level.Value, 1.5f); ++i)
+            var count = 1;
+            if (level.Value != 1)
+            {
+                count = Mathf.RoundToInt(Mathf.Pow(level.Value * 0.5f, 0.3f) * 8.0f);
+            }
+            for (var i = 0; i < count; ++i)
             {
                 var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
                 var mother = motherFactory.Create();

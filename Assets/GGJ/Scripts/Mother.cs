@@ -10,6 +10,7 @@ namespace GGJ.Scripts
     [RequireComponent(typeof(NavMeshAgent))]
     public class Mother : MonoBehaviour
     {
+        [Inject] Level level;
         [Inject] Anger anger;
         [SerializeField] Collider trigger;
     
@@ -25,8 +26,14 @@ namespace GGJ.Scripts
         public void Initialize(MotherSpawnPoint point, int index)
         {
             var agent = GetComponent<NavMeshAgent>();
+            agent.speed = Random.Range(5, 10);
             agent.Warp(point.Position);
             agent.avoidancePriority = 30 + index;
+            if (level.Value > 3 && Random.Range(0, 100.0f) < 5)
+            {
+                agent.speed *= 100;
+                agent.angularSpeed *= 100;
+            }
         }
     }
 }

@@ -2,18 +2,21 @@
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using Zenject;
 
 namespace GGJ.Scripts
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Player : MonoBehaviour
     {
-        [Inject(Id = "PlayIcon")] Image playIcon;
-        [Inject(Id = "StudyIcon")] Image studyIcon;
         [Inject] Fun _fun;
         [Inject] ZenjectSceneLoader sceneLoader;
         [Inject] Level level;
+        [Inject(Id = "GameTable")] Transform gameTable;
+        [Inject(Id = "StudyTable")] Transform studyTable;
+        [SerializeField] AudioSource seAudioSource;
     
         readonly Color enableColor = Color.white;
         readonly Color disableColor = Color.white * 0.5f;
@@ -24,21 +27,16 @@ namespace GGJ.Scripts
     
         void Start()
         {
+            var agent = GetComponent<NavMeshAgent>();
             playerState.Subscribe(state =>
             {
                 switch (state)
                 {
                     case PlayerState.Playing:
-                        playIcon.color = enableColor;
-                        studyIcon.color = disableColor;
+                        agent.destination = gameTable.position;
                         return;
                     case PlayerState.Studying:
-                        playIcon.color = disableColor;
-                        studyIcon.color = enableColor;
-                        return;
-                    case PlayerState.Waiting:
-                        playIcon.color = disableColor;
-                        studyIcon.color = disableColor;
+                        agent.destination = studyTable.position;
                         return;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -57,8 +55,6 @@ namespace GGJ.Scripts
                     case PlayerState.Studying:
                         boringValue -= Time.deltaTime * 0.05f;
                         break;
-                    case PlayerState.Waiting:
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -68,9 +64,9 @@ namespace GGJ.Scripts
 
             this.UpdateAsObservable().Where(_ => Input.GetButtonDown("Fire1")).Subscribe(_ =>
             {
+                seAudioSource.PlayOneShot(seAudioSource.clip);
                 switch (playerState.Value)
                 {
-                    case PlayerState.Waiting:
                     case PlayerState.Playing:
                         playerState.Value = PlayerState.Studying;
                         return;
