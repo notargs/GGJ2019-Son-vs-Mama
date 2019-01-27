@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class MotherSpawnPoint : MonoBehaviour
+namespace GGJ.Scripts.npc
 {
-    public Vector3 Position => transform.position;
-
-    void OnDrawGizmos()
+    public class MotherSpawnPoint : MonoBehaviour
     {
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawSphere(transform.position, 1);
+        public Vector3 Position => transform.position;
+
+        void OnDrawGizmos()
+        {
+            Gizmos.color = new Color(1, 0, 0, 0.5f);
+            Gizmos.DrawSphere(transform.position, 1);
+        }
     }
 }

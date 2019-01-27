@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface ICameraTarget
+namespace GGJ.Scripts
 {
-    Vector3 Position { get; }
+    public interface ICameraTarget
+    {
+        Vector3 Position { get; }
+    }
 }

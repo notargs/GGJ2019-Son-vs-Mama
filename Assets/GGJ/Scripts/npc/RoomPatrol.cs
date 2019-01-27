@@ -1,36 +1,38 @@
 ﻿// Patrol.cs
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-using System.Collections.Generic;
 using Zenject;
 
-public class RoomPatrol : MonoBehaviour
+namespace GGJ.Scripts.npc
 {
-    [Inject] IList<MotherPatrolPoint> points;
-    NavMeshAgent agent;
-
-
-    void Start()
+    public class RoomPatrol : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-
-        GotoNextPoint();
-    }
+        [Inject] IList<MotherPatrolPoint> points;
+        NavMeshAgent agent;
 
 
-    void GotoNextPoint()
-    {
-        if (points.Count == 0) return;
+        void Start()
+        {
+            agent = GetComponent<NavMeshAgent>();
 
-        var destPoint = Random.Range(0, points.Count);
-        agent.destination = points[destPoint].Position;
-    }
+            GotoNextPoint();
+        }
 
 
-    void Update()
-    {
-        if (agent.remainingDistance < 1.0f) GotoNextPoint();
+        void GotoNextPoint()
+        {
+            if (points.Count == 0) return;
+
+            var destPoint = Random.Range(0, points.Count);
+            agent.destination = points[destPoint].Position;
+        }
+
+
+        void Update()
+        {
+            if (agent.remainingDistance < 1.0f) GotoNextPoint();
+        }
     }
 }

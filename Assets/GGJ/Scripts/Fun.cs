@@ -2,11 +2,14 @@ using System;
 using UniRx;
 using UnityEngine;
 
-public class Fun
+namespace GGJ.Scripts
 {
-    readonly ReactiveProperty<float> value = new ReactiveProperty<float>(0.2f);
-    public float Value => value.Value;
-    public IObservable<float> OnValueChanged => value;
+    public class Fun
+    {
+        readonly ReactiveProperty<float> value = new ReactiveProperty<float>(0.2f);
+        public float Value => value.Value;
+        public IObservable<float> OnValueChanged => value;
     
-    public void SetValue(float v) => value.Value = Mathf.Clamp01(v);
+        public void SetValue(float v) => value.Value = Mathf.Clamp01(v);
+    }
 }

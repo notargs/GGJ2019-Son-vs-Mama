@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class SceneInstallerSetting
+namespace GGJ.Scripts.Installers
 {
-    [SerializeField] Mother motherPrefab;
+    [Serializable]
+    public class SceneInstallerSetting
+    {
+        [SerializeField] Mother motherPrefab;
 
-    public Mother MotherPrefab => motherPrefab;
+        public Mother MotherPrefab => motherPrefab;
+    }
 }

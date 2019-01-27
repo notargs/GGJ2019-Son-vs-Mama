@@ -1,13 +1,15 @@
 using UnityEngine;
 using Zenject;
-using Zenject.MemoryPoolMonitor;
 
-[CreateAssetMenu(fileName = "ScriptableObjectInstaller", menuName = "Installers/ScriptableObjectInstaller")]
-public class ScriptableObjectInstaller : ScriptableObjectInstaller<ScriptableObjectInstaller>
+namespace GGJ.Scripts.Installers
 {
-    [SerializeField] SceneInstallerSetting sceneInstallerSetting;
-    public override void InstallBindings()
+    [CreateAssetMenu(fileName = "ScriptableObjectInstaller", menuName = "Installers/ScriptableObjectInstaller")]
+    public class ScriptableObjectInstaller : ScriptableObjectInstaller<ScriptableObjectInstaller>
     {
-        Container.BindInstances(sceneInstallerSetting);
+        [SerializeField] SceneInstallerSetting sceneInstallerSetting;
+        public override void InstallBindings()
+        {
+            Container.BindInstances(sceneInstallerSetting);
+        }
     }
 }

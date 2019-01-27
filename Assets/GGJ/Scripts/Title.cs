@@ -3,15 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class Title : MonoBehaviour
+namespace GGJ.Scripts
 {
-    [Inject] ZenjectSceneLoader sceneLoader;
-    
-    [SerializeField] Button button = default;
-    
-    void Start()
+    public class Title : MonoBehaviour
     {
-        button.OnClickAsObservable()
-            .Subscribe(_ => sceneLoader.LoadScene("MainScene"));
+        [Inject] ZenjectSceneLoader sceneLoader;
+    
+        [SerializeField] Button button = default;
+    
+        void Start()
+        {
+            button.OnClickAsObservable()
+                .Subscribe(_ => sceneLoader.LoadScene("MainScene"));
+        }
     }
 }

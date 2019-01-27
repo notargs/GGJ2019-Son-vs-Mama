@@ -1,9 +1,12 @@
-public class Level
+namespace GGJ.Scripts
 {
-    public int Value { get; }
-
-    public Level(int value)
+    public class Level
     {
-        Value = value;
+        public int Value { get; }
+
+        public Level(int value)
+        {
+            Value = value;
+        }
     }
 }

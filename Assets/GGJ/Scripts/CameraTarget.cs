@@ -1,18 +1,21 @@
 using UnityEngine;
 using Zenject;
 
-public class CameraTarget : MonoBehaviour, ICameraTarget
+namespace GGJ.Scripts
 {
-    Vector3 ICameraTarget.Position => transform.position;
-    [Inject] CameraPresenter cameraPresenter;
+    public class CameraTarget : MonoBehaviour, ICameraTarget
+    {
+        Vector3 ICameraTarget.Position => transform.position;
+        [Inject] CameraPresenter cameraPresenter;
 
-    void OnEnable()
-    {
-        cameraPresenter.Add(this);
-    }
+        void OnEnable()
+        {
+            cameraPresenter.Add(this);
+        }
     
-    void OnDisable()
-    {
-        cameraPresenter.Remove(this);
+        void OnDisable()
+        {
+            cameraPresenter.Remove(this);
+        }
     }
 }
