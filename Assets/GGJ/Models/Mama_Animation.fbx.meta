@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 8ed5b117d4ed44af8bd75c0a7781b60e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm_Left
+    100002: Arm_Left1
+    100004: Body
+    100006: Dress
+    100008: joint1
+    100010: joint10
+    100012: joint11
+    100014: joint12
+    100016: joint13
+    100018: joint14
+    100020: joint2
+    100022: joint3
+    100024: joint4
+    100026: joint5
+    100028: joint6
+    100030: joint7
+    100032: joint8
+    100034: joint9
+    100036: Mama
+    100038: //RootNode
+    100040: Mama_Head
+    100042: nurbsCircle1
+    100044: nurbsCircle2
+    100046: nurbsCircle3
+    100048: nurbsCircle4
+    100050: transform1
+    100052: transform2
+    100054: transform3
+    100056: transform4
+    400000: Arm_Left
+    400002: Arm_Left1
+    400004: Body
+    400006: Dress
+    400008: joint1
+    400010: joint10
+    400012: joint11
+    400014: joint12
+    400016: joint13
+    400018: joint14
+    400020: joint2
+    400022: joint3
+    400024: joint4
+    400026: joint5
+    400028: joint6
+    400030: joint7
+    400032: joint8
+    400034: joint9
+    400036: Mama
+    400038: //RootNode
+    400040: Mama_Head
+    400042: nurbsCircle1
+    400044: nurbsCircle2
+    400046: nurbsCircle3
+    400048: nurbsCircle4
+    400050: transform1
+    400052: transform2
+    400054: transform3
+    400056: transform4
+    2100000: phong5
+    2100002: phong6
+    2100004: phong1
+    2100006: Hair
+    2100008: Eyes
+    4300000: Body
+    4300002: Dress
+    4300004: Arm_Left
+    4300006: Arm_Left1
+    4300008: Mama_Head
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Arm_Left
+    13700002: Arm_Left1
+    13700004: Body
+    13700006: Dress
+    13700008: Mama_Head
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
